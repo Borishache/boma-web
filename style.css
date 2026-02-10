@@ -201,9 +201,13 @@ a {
     letter-spacing: -0.02em;
 }
 
+.text-blue {
+    color: var(--primary-blue);
+}
+
 .highlight {
     color: var(--primary-blue);
-    font-style: italic;
+    /* font-style: italic; Removed per user request */
     position: relative;
     display: inline-block;
 }
