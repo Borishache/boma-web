@@ -19,7 +19,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="logo.svg" alt="BOMA" style="height: 60px;">
+                <img src="logo.svg" alt="BOMA" class="logo-img">
             </div>
             <button class="mobile-toggle" aria-label="Abrir menú">
                 <span></span>
@@ -61,8 +61,7 @@
             <div class="container">
                 <div class="about-content">
                     <div class="about-visual">
-                        <div class="portfolio-img"
-                            style="aspect-ratio: 1; background: linear-gradient(135deg, var(--dark-black), var(--primary-blue)); opacity: 0.8;">
+                        <div class="portfolio-img about-img-bg">
                         </div>
                     </div>
                     <div class="about-text">
@@ -148,12 +147,12 @@
                 <h2 class="section-title">Proyectos Destacados</h2>
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
-                        <div class="portfolio-img" style="background-color: #d1d5db;"></div>
+                        <div class="portfolio-img project-alpha-bg"></div>
                         <span>Fintech</span>
                         <h4>Plataforma Financiera Alpha</h4>
                     </div>
                     <div class="portfolio-item">
-                        <div class="portfolio-img" style="background-color: #9ca3af;"></div>
+                        <div class="portfolio-img project-beta-bg"></div>
                         <span>E-Commerce</span>
                         <h4>Boutique Moda Minimal</h4>
                     </div>
@@ -166,10 +165,34 @@
             <div class="container">
                 <div class="contact-wrapper">
                     <div class="contact-info">
-                        <h2 class="section-title">¿Listo para hacer crecer tu negocio?</h2>
-                        <p>Hablemos. Cuéntanos tu idea y armamos juntos el plan para llevarla al siguiente nivel.</p>
-                        <a href="mailto:hola@boma.com" class="btn-contact">👉 Escríbenos o llámanos para que empecemos
-                            hoy</a>
+                        <h2 class="section-title">Hablemos de tu proyecto</h2>
+                        <p>Cuéntanos tu idea y armamos juntos el plan para llevarla al siguiente nivel.</p>
+
+                        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="company">Empresa / Proyecto</label>
+                                <input type="text" id="company" name="company"
+                                    placeholder="Nombre de tu negocio (Opcional)">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Correo Electrónico</label>
+                                <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">¿En qué podemos ayudarte?</label>
+                                <textarea id="message" name="message" rows="4"
+                                    placeholder="Cuéntanos brevemente sobre tu proyecto o duda..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -179,7 +202,7 @@
     <footer class="footer">
         <div class="container column">
             <div class="logo" style="margin-bottom: 1rem;">
-                <img src="logo.svg" alt="BOMA" style="height: 50px; filter: brightness(0) invert(1);">
+                <img src="logo.svg" alt="BOMA" class="logo-footer-img">
             </div>
             <p>&copy; 2026 BOMA. Todos los derechos reservados.</p>
         </div>

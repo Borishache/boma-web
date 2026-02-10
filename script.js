@@ -35,6 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: "0px 0px -50px 0px"
     };
 
+    // Progressive Enhancement: Add class to body to enable JS-dependent styles
+    document.body.classList.add('js-active');
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -44,23 +47,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Elements to animate
-    // const animateElements = document.querySelectorAll('.section-title, .service-card, .portfolio-item, .contact-wrapper, .hero-visua'); // logic to select elements
-
-    // Select specific elements to animate if they exist
+    // Select specific elements to animate
     const elementsToAnimate = [
         ...document.querySelectorAll('.section-title'),
         ...document.querySelectorAll('.service-card'),
         ...document.querySelectorAll('.portfolio-item'),
         ...document.querySelectorAll('.contact-wrapper'),
-        ...document.querySelectorAll('.why-card')
+        ...document.querySelectorAll('.why-card'),
+        document.querySelector('.hero-text') // Added hero-text here instead of separate logic
     ];
 
     elementsToAnimate.forEach(el => {
-        el.style.opacity = '0'; // Hide initially
-        el.style.transform = 'translateY(20px)'; // Initial offset matching keyframe
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; // Ensure styling
-        observer.observe(el);
+        if (el) {
+            el.classList.add('reveal-on-scroll');
+            observer.observe(el);
+        }
     });
 
     // Add class for CSS animation control if preferred over inline styles
@@ -71,18 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cleaned up redundant loop used to be here
 
 
-    // Smooth Entrance Animation for Hero Text
-    const heroText = document.querySelector('.hero-text');
-    if (heroText) {
-        heroText.style.opacity = '0';
-        heroText.style.transform = 'translateY(30px)';
-        heroText.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
-
-        setTimeout(() => {
-            heroText.style.opacity = '1';
-            heroText.style.transform = 'translateY(0)';
-        }, 100);
-    }
+    // Hero text animation is now handled by the general observer above
 
     // Header Scroll Effect
     const header = document.querySelector('.header');
