@@ -118,4 +118,27 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => {
         navObserver.observe(section);
     });
+
+    // Mobile Menu Toggle
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const nav = document.querySelector('.nav');
+    const navLinksMobile = document.querySelectorAll('.nav-link, .nav-cta');
+
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+            // Toggle body scroll
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking a link
+        navLinksMobile.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                mobileToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
 });
