@@ -1,0 +1,7 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="80" height="80" rx="10" fill="#77A0ED" style="display:none;"/> <!-- Background for context, hidden -->
+<!-- The B Mark -->
+<path d="M20 10H45C58 10 65 16 65 28C65 34 60 40 54 41C62 43 65 48 65 58C65 70 58 75 45 75H20V10Z" fill="currentColor"/>
+<path d="M35 25H42C46 25 48 27 48 30C48 33 46 35 42 35H35V25Z" fill="#F5EDE1"/>
+<path d="M35 48H42C48 48 50 50 50 54C50 58 48 60 42 60H35V48Z" fill="#F5EDE1"/>
+</svg>
