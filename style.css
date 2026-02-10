@@ -199,6 +199,7 @@ a {
     margin-bottom: 2.618rem;
     /* Golden Margin */
     letter-spacing: -0.02em;
+    text-wrap: balance;
 }
 
 .text-blue {
