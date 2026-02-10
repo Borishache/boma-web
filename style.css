@@ -166,11 +166,11 @@ a {
 }
 
 .headline {
-    font-size: 5.5rem;
-    line-height: 1.05;
+    font-size: 3.5rem;
+    line-height: 1.1;
     font-weight: 700;
     margin-bottom: 2rem;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
 }
 
 .highlight {
@@ -181,12 +181,12 @@ a {
 }
 
 .subheadline {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 300;
     opacity: 0.9;
     max-width: 480px;
     margin-bottom: 3rem;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .hero-visual {
@@ -242,10 +242,10 @@ a {
 }
 
 .section-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 4rem;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
     position: relative;
 }
 
@@ -276,7 +276,7 @@ a {
 }
 
 .service-card h3 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
@@ -325,7 +325,7 @@ a {
 }
 
 .portfolio-item h4 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 600;
 }
 
@@ -346,7 +346,7 @@ a {
 }
 
 .contact-info p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 300;
     margin-bottom: 2rem;
 }
@@ -358,7 +358,7 @@ a {
     color: var(--light-bg);
     border-radius: 50px;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     transition: transform 0.3s ease;
 }
 
@@ -392,7 +392,7 @@ a {
 }
 
 .about-text p {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     margin-bottom: 2rem;
     color: var(--dark-black);
     opacity: 0.8;
@@ -525,7 +525,7 @@ a {
 /* Responsive */
 @media (max-width: 900px) {
     .headline {
-        font-size: 3.5rem;
+        font-size: 2.5rem;
     }
 
     .container {
