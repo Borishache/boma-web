@@ -131,4 +131,33 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+
+    // Generate Random Stars
+    function createStars() {
+        const starCount = 50; // Number of stars
+        const body = document.body;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star-tiny');
+
+            // Random Position
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+
+            // Random Animation Duration and Delay
+            const duration = 2 + Math.random() * 3;
+            const delay = Math.random() * 2;
+
+            star.style.left = `${x}vw`;
+            star.style.top = `${y}vh`;
+            star.style.animationDuration = `${duration}s`;
+            star.style.animationDelay = `${delay}s`;
+
+            body.appendChild(star);
+        }
+    }
+
+    createStars();
 });

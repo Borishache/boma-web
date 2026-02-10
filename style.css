@@ -10,6 +10,7 @@
     --radius-sm: 12px;
     --radius-md: 24px;
     --radius-lg: 40px;
+    --radius-xl: 60px;
     --radius-pill: 999px;
     --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.2);
@@ -344,22 +345,6 @@ a {
     color: var(--dark-black);
 }
 
-/* Keep title dark on light gradient */
-
-/* Or if user wants dark SECTION, we use a dark glass panel */
-.bg-dark-wrapper {
-    background: rgba(41, 37, 33, 0.95);
-    margin: 2rem 5%;
-    border-radius: var(--radius-lg);
-    padding: 4rem 2rem;
-    color: var(--light-bg);
-}
-
-/* Reverting strictly to user's 'dark section' preference but making it 'glassy' if possible? 
-   Actually, 'Atmósfera Degradada' suggests full gradient.
-   I will make the 'Dark' section a floating dark glass panel.
-*/
-
 .section-title {
     font-size: 3rem;
     font-weight: 700;
@@ -382,7 +367,8 @@ a {
 
 /* About - Glass Card */
 .about-content {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
+    /* Increased Opacity */
     backdrop-filter: blur(20px);
     border-radius: var(--radius-lg);
     padding: 3rem;
@@ -425,7 +411,8 @@ a {
 }
 
 .service-card {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.6);
+    /* Increased Opacity */
     backdrop-filter: blur(15px);
     border-radius: var(--radius-lg);
     padding: 2.5rem;
@@ -471,7 +458,8 @@ a {
 }
 
 .why-card {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.75);
+    /* Increased Opacity */
     backdrop-filter: blur(10px);
     padding: 2.5rem;
     border-radius: var(--radius-lg);
@@ -532,6 +520,8 @@ a {
     position: relative;
     overflow: hidden;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    margin: 0 auto;
 }
 
 /* Glow effect inside contact */
@@ -656,6 +646,33 @@ a {
     text-align: center;
 }
 
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(41, 37, 33, 0.05);
+    border-radius: 50%;
+    color: var(--dark-black);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.social-btn:hover {
+    background: var(--primary-blue);
+    color: var(--light-bg);
+    transform: translateY(-3px);
+}
+
 /* Animations */
 .fade-in-up {
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -665,11 +682,6 @@ a {
     from {
         opacity: 0;
         transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
     }
 
     to {
@@ -722,6 +734,12 @@ body.js-active .reveal-on-scroll.fade-in-up {
 
     .mobile-toggle {
         display: flex;
+        width: 44px;
+        /* Improved touch target */
+        height: 44px;
+        padding: 10px;
+        box-sizing: content-box;
+        margin-right: -10px;
     }
 
     .headline {
@@ -757,6 +775,18 @@ body.js-active .reveal-on-scroll.fade-in-up {
         display: none;
     }
 
+    /* Restore default cursor for touch/mobile or when custom cursor is hidden */
+    * {
+        cursor: auto;
+    }
+}
+
+/* Ensure cursor is visible on devices that don't support hover (touch) specifically if not covered by width query */
+@media (hover: none) {
+    .cursor {
+        display: none;
+    }
+
     * {
         cursor: auto;
     }
@@ -768,71 +798,129 @@ body.js-active .reveal-on-scroll.fade-in-up {
     width: auto;
 }
 
+/* Tiny Twinkling Stars */
+.star-tiny {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background-color: var(--primary-blue);
+    border-radius: 50%;
+    z-index: -1;
+    /* Behind content */
+    opacity: 0.6;
+    animation: twinkle linear infinite;
+    pointer-events: none;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2);
+    }
+}
+
+/* Accessibility & Refinements */
+
+/* Focus States for Keyboard Navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 4px;
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .floating-shape,
+    .star-decor {
+        animation: none !important;
+    }
+}
+
 .logo-footer-img {
     height: 50px;
     width: auto;
 }
 
+/* Construction Tape */
+.construction-tape-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 4rem 0;
+    position: relative;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.construction-tape {
+    background: #FFD700;
+    /* Safety Yellow */
+    color: #000;
+    font-weight: 800;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    white-space: nowrap;
+    transform: rotate(-3deg) scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 2rem;
+    width: 120%;
+    /* wider to cover rotation */
+    animation: slideTape 20s linear infinite;
+    background-image: repeating-linear-gradient(45deg,
+            #FFD700,
+            #FFD700 20px,
+            #000 20px,
+            #000 40px);
+    border: 2px solid #000;
+}
+
+/* Override background for text visibility if needed, or use text-shadow */
+.construction-tape span {
+    background: #FFD700;
+    padding: 0 1rem;
+    border: 2px solid #000;
+}
+
+@keyframes slideTape {
+    0% {
+        transform: rotate(-3deg) translateX(0);
+    }
+
+    100% {
+        transform: rotate(-3deg) translateX(-50%);
+    }
+}
+
+/* About Image Placeholder */
+/* If team.jpg is missing, use a fallback color */
 .about-img-bg {
-    aspect-ratio: 1;
-    background: linear-gradient(135deg, var(--dark-black), var(--primary-blue));
-    opacity: 0.8;
-}
-
-.project-alpha-bg {
-    background-color: #d1d5db;
-}
-
-.project-beta-bg {
-    background-color: #9ca3af;
-}
-
-/* Tablet Responsive (iPad / Large Phones) */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .headline {
-        font-size: 3.5rem;
-    }
-
-    .hero {
-        padding: 120px 5% 80px 5%;
-    }
-
-    .services-grid,
-    .about-content {
-        gap: 2rem;
-    }
-
-    .about-content {
-        padding: 2rem;
-    }
-}
-
-/* Small Mobile Adjustments */
-@media (max-width: 480px) {
-    .headline {
-        font-size: 2.5rem;
-        /* Smaller for very small screens */
-    }
-
-    .hero-text .subheadline {
-        font-size: 1.1rem;
-    }
-
-    .section-title {
-        font-size: 2.2rem;
-    }
-
-    .nav-cta {
-        width: 100%;
-        text-align: center;
-        display: block;
-    }
-
-    .contact-wrapper {
-        padding: 2rem 1rem;
-    }
-
-    .header {
-        padding: 0.8rem;
-    }
+    background-image: url('team.jpg');
+    /* Expected path */
+    background-size: cover;
+    background-position: center;
+    background-color: #ccc;
+    /* Fallback */
+    min-height: 400px;
+    /* Ensure visibility */
 }
