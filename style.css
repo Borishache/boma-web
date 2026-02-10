@@ -733,6 +733,27 @@ body.js-active .reveal-on-scroll.fade-in-up {
     }
 
     .mobile-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .mobile-toggle span {
+        width: 100%;
+        height: 3px;
+        background-color: var(--dark-black);
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-toggle {
         display: flex;
         width: 44px;
         /* Improved touch target */
@@ -792,9 +813,8 @@ body.js-active .reveal-on-scroll.fade-in-up {
     }
 }
 
-/* New Extracted Styles */
-.logo-img {
-    height: 60px;
+.logo-footer-img {
+    height: 50px;
     width: auto;
 }
 
