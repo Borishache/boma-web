@@ -795,10 +795,18 @@ body.js-active .reveal-on-scroll.fade-in-up {
         grid-template-columns: 1fr;
         gap: 2.5rem;
         /* Increased gap for better separation */
+        overflow: visible;
     }
 
     .about-content {
         padding: 2rem 1.5rem;
+        height: auto;
+    }
+
+    .star-top-right {
+        top: 5%;
+        right: -10%;
+        opacity: 0.6;
     }
 
     .contact-wrapper {
