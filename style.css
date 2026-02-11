@@ -15,11 +15,6 @@
     --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.2);
     --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-
-    /* Editor Variables */
-    --body-font-size: 15px;
-    --hero-font-size: 3.5rem;
-    --section-title-size: 3rem;
 }
 
 html {
@@ -47,7 +42,7 @@ body {
     overflow-x: hidden;
     line-height: 1.618;
     line-height: 1.618;
-    font-size: var(--body-font-size);
+    font-size: 15px;
     /* Reduced by ~20% from 18px */
 
 }
@@ -244,7 +239,7 @@ a {
 }
 
 .headline {
-    font-size: var(--hero-font-size);
+    font-size: 3.5rem;
     /* Reduced from 4.5rem (~20%) */
     line-height: 1.1;
     font-weight: 700;
@@ -354,7 +349,7 @@ a {
 }
 
 .section-title {
-    font-size: var(--section-title-size);
+    font-size: 3rem;
     font-weight: 700;
     margin-bottom: 3rem;
     letter-spacing: -0.02em;
