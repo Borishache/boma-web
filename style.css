@@ -775,11 +775,17 @@ body.js-active .reveal-on-scroll.fade-in-up {
     }
 
     .headline {
-        font-size: 3rem;
+        font-size: 2.5rem;
+        /* Further reduced for mobile */
     }
 
     .hero {
-        padding-top: 120px;
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
+    .subheadline {
+        font-size: 1.1rem;
     }
 
     .about-content,
@@ -787,14 +793,41 @@ body.js-active .reveal-on-scroll.fade-in-up {
     .portfolio-grid,
     .why-us-grid {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
+        /* Increased gap for better separation */
     }
 
     .about-content {
-        padding: 2rem;
+        padding: 2rem 1.5rem;
     }
 
     .contact-wrapper {
         padding: 3rem 1.5rem;
+        margin: 0 1rem;
+        /* Ensure side spacing */
+        width: auto;
+        /* Allow margin to work */
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+        /* Scaled down section titles */
+        padding-left: 15px;
+    }
+
+    .section-title::before {
+        width: 4px;
+    }
+
+    .nav {
+        /* Ensure touch targets are good */
+        gap: 2.5rem;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        /* Larger text for touch */
+        padding: 1rem;
     }
 
     .floating-shape {
