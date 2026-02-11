@@ -204,7 +204,8 @@ a {
     background-image: url('star.svg');
     background-size: contain;
     background-repeat: no-repeat;
-    z-index: 5;
+    z-index: 1;
+    /* Behind content (was 5) */
     animation: rotateStar 10s linear infinite;
     opacity: 0.8;
 }
@@ -236,7 +237,8 @@ a {
 }
 
 .headline {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
+    /* Reduced from 4.5rem (~20%) */
     line-height: 1.1;
     font-weight: 700;
     margin-bottom: 2rem;
