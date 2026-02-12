@@ -162,22 +162,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     createStars();
 
-    // Google Sheets Form Submission
+    // Formspree Submission Logic
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
     const submitBtn = document.querySelector('.btn-submit');
 
-    // REPLACE THIS URL WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
-    const GOOGLE_SCRIPT_URL = 'PLACEHOLDER_URL_HERE'; // <--- PASTE URL HERE
-
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            if (GOOGLE_SCRIPT_URL === 'PLACEHOLDER_URL_HERE') {
-                formStatus.textContent = 'Error: Falta configurar la URL del script.';
+            // ⚠️ IMPORTANTE: REEMPLAZA ESTO CON TU ID DE FORMSPREE
+            // Ve a https://formspree.io/ para obtenerlo.
+            const FORMSPREE_ID = 'meelazjb';
+
+            if (FORMSPREE_ID === 'TU_ID_AQUI') {
+                formStatus.textContent = 'Error: Falta configurar el ID del formulario en script.js';
                 formStatus.className = 'form-status error';
-                console.error('Google Script URL not set.');
+                console.error('Formspree ID not set.');
                 return;
             }
 
@@ -188,33 +189,37 @@ document.addEventListener('DOMContentLoaded', () => {
             formStatus.className = 'form-status';
 
             const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries());
 
-            // Use 'no-cors' mode for Google Apps Script to avoid CORS errors
-            // Note: In 'no-cors' mode, we can't read the response status, so we assume success if no network error.
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-                .then(() => {
-                    // Success (Assumed in no-cors)
+            try {
+                const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
                     formStatus.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
                     formStatus.className = 'form-status success';
                     contactForm.reset();
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    formStatus.textContent = 'Hubo un error al enviar el mensaje. Inténtalo de nuevo.';
+                } else {
+                    const data = await response.json();
+                    if (Object.hasOwn(data, 'errors')) {
+                        formStatus.textContent = data.errors.map(error => error.message).join(", ");
+                    } else {
+                        formStatus.textContent = 'Hubo un error al enviar el mensaje. Inténtalo de nuevo.';
+                    }
                     formStatus.className = 'form-status error';
-                })
-                .finally(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Enviar Mensaje';
-                });
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                formStatus.textContent = 'Hubo un error de conexión. Inténtalo de nuevo.';
+                formStatus.className = 'form-status error';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar Mensaje';
+            }
         });
     }
 });
