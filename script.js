@@ -159,5 +159,62 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+
     createStars();
+
+    // Google Sheets Form Submission
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    const submitBtn = document.querySelector('.btn-submit');
+
+    // REPLACE THIS URL WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
+    const GOOGLE_SCRIPT_URL = 'PLACEHOLDER_URL_HERE'; // <--- PASTE URL HERE
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            if (GOOGLE_SCRIPT_URL === 'PLACEHOLDER_URL_HERE') {
+                formStatus.textContent = 'Error: Falta configurar la URL del script.';
+                formStatus.className = 'form-status error';
+                console.error('Google Script URL not set.');
+                return;
+            }
+
+            // Loading State
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+            formStatus.textContent = '';
+            formStatus.className = 'form-status';
+
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+
+            // Use 'no-cors' mode for Google Apps Script to avoid CORS errors
+            // Note: In 'no-cors' mode, we can't read the response status, so we assume success if no network error.
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(() => {
+                    // Success (Assumed in no-cors)
+                    formStatus.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
+                    formStatus.className = 'form-status success';
+                    contactForm.reset();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    formStatus.textContent = 'Hubo un error al enviar el mensaje. Inténtalo de nuevo.';
+                    formStatus.className = 'form-status error';
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Enviar Mensaje';
+                });
+        });
+    }
 });

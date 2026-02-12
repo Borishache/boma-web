@@ -164,8 +164,7 @@
                         <h2 class="section-title">Hablemos de tu proyecto</h2>
                         <p>Cuéntanos tu idea y armamos juntos el plan para llevarla al siguiente nivel.</p>
 
-                        <!-- REPLACE 'YOUR_FORM_ID' WITH YOUR ACTUAL FORMSPREE ID -->
-                        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+                        <form id="contactForm" class="contact-form">
                             <div class="form-group">
                                 <label for="name">Nombre</label>
                                 <input type="text" id="name" name="name" placeholder="Tu nombre" required>
@@ -189,6 +188,7 @@
                             </div>
 
                             <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                            <div id="formStatus" class="form-status"></div>
                         </form>
                     </div>
                 </div>
